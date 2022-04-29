@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>UMass AD</title>
+    <link href="CSS/about.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div id="header">
+        <img class="logo" src="Assets/Temp Logo.png" alt="UMassAD Logo">
+        <a class="nav-button" id="home-nav-button" href='index.html'>Home</a>
+        <a class="nav-button"><b>About AD</b></a>
+        <a class="nav-button" href='about_us.html'>About Us</a>
+        <a class="nav-button" href='our_work.html'>Our Work</a>
+        <a class="nav-button" href='calculator.html'>Calculator</a>
+        <img class="side-nav-open" src="Assets/Sidebar Icon.svg" onclick="openNav()"></img>
+    </div>
+    <div class="content">
+        <div id="about-side-nav" class="side-nav">
+            <a href="javascript:void(0)" class="side-nav-close" onclick="closeNav()">&times;</a>
+            <div class="side-nav-content">
+                <img class="icon" src="Assets/Home Icon.svg" alt="Home Icon">
+                <a href="index.html">Home</a>
+            </div>
+            <div class="side-nav-content">
+                <img class="icon" src="Assets/Flask Icon.svg" alt="Flask Icon">
+                <a href="about_ad.html">About AD</a>
+            </div>
+            <div class="side-nav-content">
+                <img class="icon" src="Assets/User Icon.svg" alt="User Icon">
+                <a href="about_us.html">About Us</a>
+            </div>
+            <div class="side-nav-content">
+                <img class="icon" src="Assets/Wrench Icon.svg" alt="Wrench Icon">
+                <a href="our_work.html">Our Work</a>
+            </div>
+            <div class="side-nav-content">
+                <img class="icon" src="Assets/Calculator Icon.svg" alt="Calculator Icon">
+                <a href="calculator.html">Calculator</a>
+            </div>
+        </div>
+        <div class="article">
+            <!--
+            <p class="article-text">
+                Anaerobic digestion is the process of converting organic materials, mainly food waste, into gases such as methane and carbon dioxide, as well as water. This is done using many species of anaerobic bacteria in tandem, each specializing in the breakdown of certain molecules in the organic mixture, or slurry.<br><br>
+                Conversion of organic waste to methane occurs in two phases, composed of four total steps. In the first phase, liquefaction, complex compounds such as carbohydrates and proteins are converted by bacteria into simpler fatty acids, which are more volatile and can thus be easily converted into gases. Liquefaction comprises the first two steps of anaerobic digestion: hydrolysis and acidification. In hydrolysis, large organic polymers are broken down into component molecules small enough to be processed. Acidogenesis, the second step, is where the products of hydrolysis are uptaken by acidogenic bacteria to produce volatile fatty acids. These include acetate, which is ready to be processed into methane, and larger organic acids, which must be first converted into acetate before processing.<br><br>
+                The formation of gas is accomplished in the second phase, gasification, in which bacteria form gases (primarily methane and carbon dioxide) from the volatile organic acids formed in liquefaction. Gasification comprises the final two steps of anaerobic digestion: acetogenesis and methanogenesis. In acetogenesis, larger volatile acids are converted into acetate to allow for conversion by methanogenic organisms (archaea and bacteria) into methane. Hydrogen is also produced here. The final step, methanogenesis, sees the production of methane as well as some carbon dioxide. About 66% of methane is produced by acetoclastic methanogens using acetate, while about 33% is produced by hydrogenotrophic methanogens using hydrogen (Meegoda et al., 2018). Methanogenesis using other molecules has also been observed.<br><br>
+                A small portion of the organic matter is used by bacteria for replication, however about 90% of original matter has been observed to end up as methane (PSU). Methane, in turn, can be used as a relatively clean and efficient fuel, as when burned it releases more heat and light by mass than other hydrocarbons, and produces less pollutants (SoCal). 
+            </p>
+            -->
+            <p class="article-text">
+                <br>Anaerobic digestion is the process of converting organic materials, mainly food waste, into gases such as methane and carbon dioxide, as well as water. 
+                This is done using many species of anaerobic bacteria in tandem, each specializing in the breakdown of certain molecules in the organic mixture, or slurry. 
+            </p>
+            <div class="figure">
+                <img src="Assets/AD_Flowchat.svg" style="width:60%;">
+                <p class="figure-caption">Anaerobic Digestion Flowchart</p>
+            </div>
+            <p class="article-text">
+                Conversion of organic waste to methane occurs in two phases, composed of four total steps. 
+                In the first phase, liquefaction, complex compounds such as carbohydrates and proteins are converted by bacteria into simpler fatty acids, which are more volatile and can thus be easily converted into gases. 
+                Liquefaction comprises the first two steps of anaerobic digestion: hydrolysis and acidification. 
+                In hydrolysis, large organic polymers are broken down into component molecules small enough to be processed. 
+                Acidogenesis, the second step, is where the products of hydrolysis are uptaken by acidogenic bacteria to produce volatile fatty acids. 
+                These include acetate, which is ready to be processed into methane, and larger organic acids, which must be first converted into acetate before processing.
+            </p>
+            <p class="article-text">
+                The formation of gas is accomplished in the second phase, gasification, in which bacteria form gases (primarily methane and carbon dioxide) from the volatile organic acids formed in liquefaction. 
+                Gasification comprises the final two steps of anaerobic digestion: acetogenesis and methanogenesis. 
+                In acetogenesis, larger volatile acids are converted into acetate to allow for conversion by methanogenic organisms (archaea and bacteria) into methane. 
+                Hydrogen is also produced here. The final step, methanogenesis, sees the production of methane as well as some carbon dioxide. 
+                About 66% of methane is produced by acetoclastic methanogens using acetate, while about 33% is produced by hydrogenotrophic methanogens using hydrogen [1]. 
+                Methanogenesis using other molecules has also been observed.
+            </p>
+            <p class="article-text">
+                A small portion of the organic matter is used by bacteria for replication, however about 90% of original matter has been observed to end up as methane [2]. 
+                Methane, in turn, can be used as a relatively clean and efficient fuel, as when burned it releases more heat and light by mass than other hydrocarbons, and produces less pollutants [3]. 
+            </p>
+            <div class="figure">
+                <img src="Assets/Anaerobic Plant.jpg" style="width:30%;">
+                <p class="figure-caption">Anaerobic Digester in Tel-Aviv, Israel 2005</p>
+            </div>
+            <p class="article-text">
+                <i>[1] Meegoda, Jay N., et al. "A Review of the Processes, Parameters, and Optimization of Anaerobic Digestion." International Journal of Environmental Research and Public Health, vol. 15, no. 10, 2018, p. 2224, doi:10.3390/ijerph15102224.
+                    <br>[2] Perrson, S. P. E. "Agricultural Anaerobic Digesters: Design and Operation." Penn State Extension, 1 Dec. 2016, <a href="https://extension.psu.edu/agricultural-anaerobic-digesters-design-and-operation" target="_blank">https://extension.psu.edu/agricultural-anaerobic-digesters-design-and-operation</a>.
+                    <br>[3] "Methane and the Environment." Socalgas.Com, <a href="https://www.socalgas.com/stay-safe/methane-emissions/methane-and-the-environment" target="_blank">https://www.socalgas.com/stay-safe/methane-emissions/methane-and-the-environment</a>. Accessed 2 Mar. 2022.
+                </i>
+            </p>
+            <br>
+        </div>  
+    </div>
+</body>
+
+<script src="JS/about.js" type="text/javascript"></script>
+
+</html>
