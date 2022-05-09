@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>UMass AD</title>
+    <link href="CSS/calculator.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div id="header">
+        <img class="logo" src="Assets/Temp Logo.png" alt="UMassAD Logo">
+        <a class="nav-button" id="home-nav-button" href='index.html'>Home</a>
+        <a class="nav-button" href='about_ad.html'>About AD</a>
+        <a class="nav-button" href='about_us.html'>About Us</a>
+        <a class="nav-button" href='our_work.html'>Our Work</a>
+        <a class="nav-button"><b>Calculator</b></a>
+        <img class="side-nav-open" src="Assets/Sidebar Icon.svg" onclick="openNav()"></img>
+    </div>
+    <div class="content">
+        <div id="about-side-nav" class="side-nav">
+            <a href="javascript:void(0)" class="side-nav-close" onclick="closeNav()">&times;</a>
+            <div class="side-nav-content">
+                <img class="icon" src="Assets/Home Icon.svg" alt="Home Icon">
+                <a href="index.html">Home</a>
+            </div>
+            <div class="side-nav-content">
+                <img class="icon" src="Assets/Flask Icon.svg" alt="Flask Icon">
+                <a href="about_ad.html">About AD</a>
+            </div>
+            <div class="side-nav-content">
+                <img class="icon" src="Assets/User Icon.svg" alt="User Icon">
+                <a href="about_us.html">About Us</a>
+            </div>
+            <div class="side-nav-content">
+                <img class="icon" src="Assets/Wrench Icon.svg" alt="Wrench Icon">
+                <a href="our_work.html">Our Work</a>
+            </div>
+            <div class="side-nav-content">
+                <img class="icon" src="Assets/Calculator Icon.svg" alt="Calculator Icon">
+                <a href="calculator.html">Calculator</a>
+            </div>
+        </div>
+        <div class="section" id="calculator">
+            <div class="container" id="calculator-description-container">
+                <p>
+                    The Calculator for Anaerobic Digestion Economic feasibility (CADE), was developed by the four undergraduates: Hansen Tjo, Josh McGee, Nicholas Sbalbi, and Kieran Tay. 
+                    It was officially published on the website in December 2020 and has since been undergoing continuous improvement. 
+                    The calculator takes in variables for physical inputs and outputs as well as the economic environment, and generates the Net Present Value (NPV) which is representative of the theoretical digester's economic feasibility.
+                    A digester with a positive NPV is considered economically viable while one with a negative NPV is considered economically unviable. 
+                    Results from this calculator are meant to be a rough estimate of scale of magnitude so that further studies can be done to refine the NPV.
+                </p>
+            </div>
+            <div class="container" id="form-container">
+                <fieldset class="group-fieldset">
+                    <h1>Revenue Variables</h1>
+                    <fieldset class="calculator-fieldset">
+                        <label for="naturalGasEVal">Natural Gas Energy Value (MJ/m^3): 
+                            <span class="tooltip-text">Energy generated per cubic meter of biogas</span>
+                        </label>
+                        <input type="number" id="naturalGasEVal" value=37.00>
+                    </fieldset>
+                    <fieldset class="calculator-fieldset">
+                        <label for="EPrice">Electricity Price ($/kWh): 
+                            <span class="tooltip-text">Price of electricity, used to calculate<br>savings due to biogas generated electricity</span>
+                        </label>
+                        <input type="number" id="EPrice" value=0.23>
+                    </fieldset>
+                    <fieldset class="calculator-fieldset">
+                        <label for="creditVal">Renewable Energy Credit Value ($/credit): 
+                            <span class="tooltip-text">Value of one energy credit, equal to one<br>megawatt-hour. Government incentive dependent</span>
+                        </label>
+                        <input type="number" id="creditVal" value=40.44>
+                    </fieldset>
+                    <fieldset class="calculator-fieldset">
+                        <label for="tipFee1">Tipping Fee 1 ($/ton): 
+                            <span class="tooltip-text">Per ton savings or revenue from SSO waste removal</span>
+                        </label>
+                        <input type="number" id="tipFee1" value=42>
+                    </fieldset>
+                    <fieldset class="calculator-fieldset">
+                        <label for="tipFee2">Tipping Fee 2 ($/ton): 
+                            <span class="tooltip-text">Optional second price to change to after transition year</span>
+                        </label>
+                        <input type="number" id="tipFee2" value=60>
+                    </fieldset>
+                    <fieldset class="calculator-fieldset">
+                        <label for="tipTransition">SSO Tip Transition Year (17 for None): 
+                            <span class="tooltip-text">Transition year between SSO tip price changes.<br>The second price is used for and after the entered year</span>
+                        </label>
+                        <input type="number" id="tipTransition" value=10>
+                    </fieldset>
+                    <fieldset class="calculator-fieldset">
+                        <label for="salvagePercent">Salvage Percent (Decimal &#60; 1): 
+                            <span class="tooltip-text">Fraction of salvagable initial capital cost</span>
+                        </label>
+                        <input type="number" id="salvagePercent" value=0.11>
+                    </fieldset>
+                    <fieldset class="calculator-fieldset">
+                        <label for="depreciationYrs">Depreciation Time (yrs, 16 Max): 
+                            <span class="tooltip-text">Duration of depreciation write off.<br>Straight line depreciation is used</span>
+                        </label>
+                        <input type="number" id="depreciationYrs" value=12>
+                    </fieldset>
+                </fieldset>
+                <fieldset class="group-fieldset">
+                    <h1>System Variables</h1>
+                    <fieldset class="calculator-fieldset"> 
+                        <label for="feedCombo">Feedstock Combination: 
+                            <span class="tooltip-text">Add later</span>
+                        </label>
+                        <select name="feedCombo" id="feedCombo" value="cowManure">
+                            <option value="cowManure">Cow Manure</option>
+                            <option value="pigManure">Pig Manure</option>
+                            <option value="foodWaste">Food Waste</option>
+                            <option value="cowPig">Cow & Pig</option>
+                            <option value="cowFood">Cow & Food</option>
+                            <option value="pigFood">Pig & Food</option>
+                        </select>
+                    </fieldset>
+                    <fieldset class="calculator-fieldset">
+                        <label for="feedComp">Feedstock 1 Composition %: 
+                            <span class="tooltip-text">Volume composition % of feed that is Feedstock 1 (Does not apply to pure feedstocks Ex. Just Cow Manure)</span>
+                        </label>
+                        <input type="number" id="feedComp" value=100>
+                    </fieldset>
+                    <fieldset class="calculator-fieldset">
+                        <label for="feedVol">Feedstock Volume (L/day): 
+                            <span class="tooltip-text">Daily feedstock processing amount</span>
+                        </label>
+                        <input type="number" id="feedVol" value=19700>
+                    </fieldset>
+                    <fieldset class="calculator-fieldset"> 
+                        <label for="opDays">Operating Days (days/yr): 
+                            <span class="tooltip-text">Number of days in operation per year</span>
+                        </label>
+                        <input type="number" id="opDays" value=365>
+                    </fieldset>
+                </fieldset>
+                <fieldset class="group-fieldset">
+                    <h1>Expenses Variables</h1>
+                    <fieldset class="calculator-fieldset">
+                        <label for="OMCosts">Total O&M Costs ($/yr): 
+                            <span class="tooltip-text">Yearly operation and management costs</span>
+                        </label>
+                        <input type="number" id="OMCosts" value=1855000>
+                    </fieldset>
+                    <fieldset class="calculator-fieldset">
+                        <label for="tax">Annual Town Taxes ($/yr): 
+                            <span class="tooltip-text">Annual taxes for reactor/generator operation</span>
+                        </label>
+                        <input type="number" id="tax" value=230000>
+                    </fieldset>
+                    <fieldset class="calculator-fieldset">
+                        <label for="numWorkers">Number of Workers: 
+                            <span class="tooltip-text">Number of full-time workers for the reactor/generator</span>
+                        </label>
+                        <input type="number" id="numWorkers" value=5>
+                    </fieldset>
+                    <fieldset class="calculator-fieldset">
+                        <label for="workCost">Cost Per Worker ($/yr): 
+                            <span class="tooltip-text">Worker salary, adjusted by 3% yearly in<br>the book to account for cost of living</span>
+                        </label>
+                        <input type="number" id="workCost" value=60000>
+                    </fieldset>
+                </fieldset>
+                <fieldset class="group-fieldset">
+                    <h1>Advanced Variables</h1>
+                    <fieldset class="calculator-fieldset">
+                        <label for="workingCapital">Working Capital ($): 
+                            <span class="tooltip-text">??? TO ADD ???</span>
+                        </label>
+                        <input type="number" id="workingCapital" value=3000000>
+                    </fieldset>
+                    <fieldset class="calculator-fieldset">
+                        <label for="discountRate">Discount Rate (Decimal &#60; 1):
+                            <span class="tooltip-text">??? TO ADD ???</span>
+                        </label>
+                        <input type="number" id="discountRate" value=0.07>
+                    </fieldset>
+                </fieldset>
+                <button onclick="calc()">Calculate</button>
+            </div>    
+            <div class="container" id="results-container">
+                <div class="NPV-result-display" id="NPV"><b><u>Net Present Value ($):</u></b> </div>
+                <br>
+                <h1 class="result-display-heading">System Outputs</h1>
+                <div class="result-display">Total Biogas Ouput (L/day): 
+                    <div class="result-number" id="bioOut"></div>
+                </div>
+                <div class="result-display">Total Biogas (L/yr): 
+                    <div class="result-number" id="totalBioPerYr"></div>
+                </div>
+                <div class="result-display">Methane (m^3/yr): 
+                    <div class="result-number" id="MePerYr"></div>
+                </div>
+                <div class="result-display">Feedstock Ton Per Yr: 
+                    <div class="result-number" id="FeedTonPerYr"></div>
+                </div>
+                <div class="result-display">Total Energy per year (kWh/yr): 
+                    <div class="result-number" id="kWhPerYr"></div>
+                </div>
+                <h1 class="result-display-heading">Revenue Items</h1>
+                <div class="result-display">Electricity Savings from Energy ($/yr): 
+                    <div class="result-number" id="ESavings"></div>
+                </div>
+                <div class="result-display">Annual Renewables Credit Value ($/yr): 
+                    <div class="result-number" id="creditValPerYr"></div>
+                </div>
+                <div class="result-display">Annual Revenue from Tips in Period 1 ($/yr): 
+                    <div class="result-number" id="TipRev1"></div>
+                </div>
+                <div class="result-display">Annual Revenue from Tips in Period 2 ($/yr): 
+                    <div class="result-number" id="TipRev2"></div>
+                </div>
+                <div class="result-display">Depreciation Value ($/yr): 
+                    <div class="result-number" id="depreciationVal"></div>
+                </div><br>
+                <table id="book-table">
+                    <thead id="book-head">
+                        <tr class="book-row">
+                            <th class="book-header">Year</th>
+                            <th class="book-header">Labor
+                                <span class="tooltip-text">-(number of workers * cost per worker)*1.03^(year-1)</span>
+                            </th>
+                            <th class="book-header">O&M Costs
+                                <span class="tooltip-text">constant directly from input</span>
+                            </th>
+                            <th class="book-header">Taxes
+                                <span class="tooltip-text">constant directly from input</span>
+                            </th>
+                            <th class="book-header">Tipping Revenues
+                                <span class="tooltip-text">tipping fee $/ton * Feed Processing (Ton/yr)</span>
+                            </th>
+                            <th class="book-header">Electricity Savings
+                                <span class="tooltip-text">electricity price * kWh generation per year</span>
+                            </th>
+                            <th class="book-header">Renewable Energy Credits
+                                <span class="tooltip-text">kWh generation per year * (1 MWh / 1000 kWh) * credit value per MWh</span>
+                            </th>
+                            <th class="book-header">Depreciation
+                                <span class="tooltip-text">capital cost * (1 - salvage percent) / depreciation time</span>
+                            </th>
+                            <th class="book-header">Salvage
+                                <span class="tooltip-text">salvage percent * capital cost</span>
+                            </th>
+                            <th class="book-header">Total Capital
+                                <span class="tooltip-text-right">from input</span>
+                            </th>
+                            <th class="book-header">Sum
+                                <span class="tooltip-text-right">sum of columns to left</span>
+                            </th>
+                            <th class="book-header">Present Value
+                                <span class="tooltip-text-right">sum / (1 + discount rate)^year</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="book-body">
+                        <tr class="book-row">
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                        </tr>
+                        <tr class="book-row">
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                        </tr>
+                        <tr class="book-row">
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                        </tr>
+                        <tr class="book-row">
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                        </tr>
+                        <tr class="book-row">
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                        </tr>
+                        <tr class="book-row">
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                        </tr>
+                        <tr class="book-row">
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                        </tr>
+                        <tr class="book-row">
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                        </tr>
+                        <tr class="book-row">
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                        </tr>
+                        <tr class="book-row">
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                        </tr>
+                        <tr class="book-row">
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                        </tr>
+                        <tr class="book-row">
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                        </tr>
+                        <tr class="book-row">
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                        </tr>
+                        <tr class="book-row">
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                        </tr>
+                        <tr class="book-row">
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                        </tr>
+                        <tr class="book-row">
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                        </tr>
+                        <tr class="book-row">
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                            <td class="book-entry"></td>
+                        </tr>
+                    </tbody>
+                    <tr class="bookRow"></tr>
+                </table>
+                <br>
+                <canvas id="PV-chart"></canvas>
+                <br>
+                <h1>Sensitivity Analysis (Impact on NPV)</h1><br>
+                <table id="sensitivity-table">
+                    <thead id="sensitivity-head">
+                        <tr>
+                            <th></th>
+                            <th>Feed Processing</th>
+                            <th>Electricity Price</th>
+                            <th>Renewable Energy Credit Value</th>
+                            <th>Tipping Fees</th>
+                            <th>O&M Costs</th>
+                            <th>Town Taxes</th>
+                            <th>Cost Per Worker</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sensitivity-body">
+                        <tr>
+                            <th>+10%</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>-10%</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <canvas id="sensitivity-chart"></canvas>
+            </div>
+        </div>
+    </div> 
+</body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js' integrity='sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==' crossorigin='anonymous'></script>
+<script src="JS/calculator.js" type="text/javascript"></script>
+
+</html>
